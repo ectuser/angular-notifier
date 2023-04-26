@@ -14,7 +14,7 @@ import { NotifierQueueService } from './notifier-queue.service';
  * block of an applications, it can be used to show new notifications, and hide existing ones. Internally, it transforms API calls into
  * actions, which then get thrown into the action queue - eventually being processed at the right moment.
  */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NotifierService {
   /**
    * Notifier queue service

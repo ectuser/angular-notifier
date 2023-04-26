@@ -8,6 +8,7 @@ import { NotifierConfigToken, NotifierOptionsToken } from './notifier.tokens';
 import { NotifierService } from './services/notifier.service';
 import { NotifierAnimationService } from './services/notifier-animation.service';
 import { NotifierQueueService } from './services/notifier-queue.service';
+import { NotifierOptionsSingleton } from './notifier.options';
 
 /**
  * Factory for a notifier configuration with custom options
@@ -41,17 +42,6 @@ export function notifierDefaultConfigFactory(): NotifierConfig {
   declarations: [NotifierContainerComponent, NotifierNotificationComponent],
   exports: [NotifierContainerComponent],
   imports: [CommonModule],
-  providers: [
-    NotifierAnimationService,
-    NotifierService,
-    NotifierQueueService,
-
-    // Provide the default notifier configuration if just the module is imported
-    {
-      provide: NotifierConfigToken,
-      useFactory: notifierDefaultConfigFactory,
-    },
-  ],
 })
 export class NotifierModule {
   /**
@@ -60,23 +50,7 @@ export class NotifierModule {
    * @param   [options={}] - Custom notifier options
    * @returns - Notifier module with custom providers
    */
-  public static withConfig(options: NotifierOptions = {}): ModuleWithProviders<NotifierModule> {
-    return {
-      ngModule: NotifierModule,
-      providers: [
-        // Provide the options itself upfront (as we need to inject them as dependencies -- see below)
-        {
-          provide: NotifierOptionsToken,
-          useValue: options,
-        },
-
-        // Provide a custom notifier configuration, based on the given notifier options
-        {
-          deps: [NotifierOptionsToken],
-          provide: NotifierConfigToken,
-          useFactory: notifierCustomConfigFactory,
-        },
-      ],
-    };
+  public static withConfig(options: NotifierOptions = {}) {
+    NotifierOptionsSingleton.Instance.options = options;
   }
 }

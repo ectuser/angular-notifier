@@ -14,7 +14,7 @@ import { NotifierAction } from '../models/notifier-action.model';
  * Technical sidenote:
  * An action looks pretty similar to the ones within the Flux / Redux pattern.
  */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NotifierQueueService {
   /**
    * Stream of actions, subscribable from outside

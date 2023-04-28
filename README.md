@@ -1,3 +1,8 @@
+No providers fix - https://github.com/ectuser/angular-notifier/pull/1
+
+Branch - https://github.com/ectuser/angular-notifier/tree/no-providers-fix
+
+
 <div align="center">
 
 # angular-notifier

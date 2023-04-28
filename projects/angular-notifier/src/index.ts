@@ -3,4 +3,5 @@ export * from './lib/components/notifier-notification.component';
 export * from './lib/models/notifier-config.model';
 export * from './lib/notifier.module';
 export * from './lib/notifier.tokens';
+export * from './lib/notifier-providers.module';
 export * from './lib/services/notifier.service';

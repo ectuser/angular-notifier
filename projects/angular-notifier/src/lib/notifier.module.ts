@@ -1,39 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { NotifierContainerComponent } from './components/notifier-container.component';
 import { NotifierNotificationComponent } from './components/notifier-notification.component';
-import { NotifierConfig, NotifierOptions } from './models/notifier-config.model';
-import { NotifierConfigToken, NotifierOptionsToken } from './notifier.tokens';
-import { NotifierService } from './services/notifier.service';
-import { NotifierAnimationService } from './services/notifier-animation.service';
-import { NotifierQueueService } from './services/notifier-queue.service';
+import { NotifierOptions } from './models/notifier-config.model';
 import { NotifierOptionsSingleton } from './notifier.options';
-
-/**
- * Factory for a notifier configuration with custom options
- *
- * Sidenote:
- * Required as Angular AoT compilation cannot handle dynamic functions; see <https://github.com/angular/angular/issues/11262>.
- *
- * @param   options - Custom notifier options
- * @returns - Notifier configuration as result
- */
-export function notifierCustomConfigFactory(options: NotifierOptions): NotifierConfig {
-  return new NotifierConfig(options);
-}
-
-/**
- * Factory for a notifier configuration with default options
- *
- * Sidenote:
- * Required as Angular AoT compilation cannot handle dynamic functions; see <https://github.com/angular/angular/issues/11262>.
- *
- * @returns - Notifier configuration as result
- */
-export function notifierDefaultConfigFactory(): NotifierConfig {
-  return new NotifierConfig({});
-}
 
 /**
  * Notifier module

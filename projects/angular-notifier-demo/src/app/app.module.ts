@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { NotifierModule, NotifierOptions, NotifierProvidersModule } from 'angular-notifier';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
-      position: 'left',
+      position: 'right',
       distance: 12,
     },
     vertical: {
@@ -54,6 +54,6 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent],
-  imports: [BrowserModule, NotifierModule.withConfig(customNotifierOptions)],
+  imports: [BrowserModule, NotifierModule, NotifierProvidersModule.withConfig(customNotifierOptions)],
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 {
-  "name": "angular-notifier",
+  "name": "@ectuser/angular-notifier",
   "sideEffects": [
     "*.scss",
     "*.css"
